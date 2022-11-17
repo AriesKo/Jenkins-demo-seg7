@@ -41,13 +41,15 @@ pipeline {
     }
   }
   post {
+    success {
     archiveArtifacts artifacts: "./seg7.runs/impl_1/top.bit", fingerprint: true
+    }
     failure {
       emailext attachLog: true,
       body: '''Project name: $PROJECT_NAME
-Build number: $BUILD_NUMBER
-Build Status: $BUILD_STATUS
-Build URL: $BUILD_URL''',
+      Build number: $BUILD_NUMBER
+      Build Status: $BUILD_STATUS
+      Build URL: $BUILD_URL''',
       recipientProviders: [culprits()],
       subject: 'Project \'$PROJECT_NAME\' is broken'
     }
