@@ -41,6 +41,7 @@ pipeline {
     }
   }
   post {
+    archiveArtifacts artifacts: "./seg7.runs/impl_1/top.bit", fingerprint: true
     failure {
       emailext attachLog: true,
       body: '''Project name: $PROJECT_NAME
