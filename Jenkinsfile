@@ -42,7 +42,7 @@ pipeline {
   }
   post {
     success {
-    archiveArtifacts artifacts: "./seg7.runs/impl_1/top.bit", fingerprint: true
+    archiveArtifacts artifacts: "seg7.runs/impl_1/top.bit", fingerprint: true
     }
     failure {
       emailext attachLog: true,
